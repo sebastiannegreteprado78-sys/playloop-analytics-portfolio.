@@ -1,8 +1,8 @@
 # PlayLoop Analytics Portfolio
 
-Análisis de datos de una aplicación móvil de juegos: adquisición de usuarios, actividad y monetización mediante compras dentro de la app (IAP). El proyecto combina un notebook en Python con un dashboard interactivo y un reporte ejecutivo por producto.
+Análisis de datos de una aplicación móvil de juegos centrado en adquisición de usuarios, actividad y monetización por compras dentro de la app (IAP). Este proyecto combina un notebook exploratorio con una base Python reutilizable y un dashboard para comunicar indicadores clave.
 
-> Proyecto de portafolio con datos de muestra. Las métricas son descriptivas y no deben interpretarse como resultados de un producto real.
+> Proyecto de portafolio con datos de ejemplo. Las métricas son descriptivas y no representan resultados reales de un producto en producción.
 
 ## Dashboard
 
@@ -12,55 +12,100 @@ Análisis de datos de una aplicación móvil de juegos: adquisición de usuarios
 
 ## Objetivos
 
-- Explorar el comportamiento y la actividad de los usuarios.
-- Analizar ingresos y ventas de compras dentro de la aplicación.
+- Explorar la actividad de usuarios y sesiones.
+- Analizar ingresos y ventas de IAP sin reembolsos.
 - Comparar usuarios por plataforma y país.
-- Presentar indicadores y tendencias en un dashboard fácil de consultar.
+- Mantener una estructura reproducible para análisis y reportes.
 
-## Contenido del repositorio
+## Estructura del repositorio
 
-| Archivo | Descripción |
+| Archivo o carpeta | Descripción |
 | --- | --- |
-| [`playloop.ipynb`](./playloop.ipynb) | Notebook de preparación y análisis de datos; genera el dashboard interactivo en Google Colab. |
-| [`PlayLoop_Analytics_Report - Reporte_Ejecutivo.csv`](./PlayLoop_Analytics_Report%20-%20Reporte_Ejecutivo.csv) | Resumen ejecutivo de unidades vendidas e ingresos por producto IAP. |
-| `Captura de pantalla…png` | Imagen de referencia del dashboard. |
+| [`playloop.ipynb`](./playloop.ipynb) | Notebook original con el dashboard interactivo y exploración de datos. |
+| [`main.py`](./main.py) | Script reutilizable para cargar datos y generar un resumen ejecutivo. |
+| [`src/playloop_analysis.py`](./src/playloop_analysis.py) | Lógica central de limpieza, validación y cálculo de KPIs. |
+| [`tests/test_playloop_analysis.py`](./tests/test_playloop_analysis.py) | Pruebas para confirmar la lógica clave del análisis. |
+| [`requirements.txt`](./requirements.txt) | Dependencias mínimas para ejecutar el proyecto localmente. |
+| [`PlayLoop_Analytics_Report - Reporte_Ejecutivo.csv`](./PlayLoop_Analytics_Report%20-%20Reporte_Ejecutivo.csv) | Resumen ejecutivo por producto y ventas. |
 
-## Qué muestra el dashboard
+## Qué muestra el proyecto
 
-- Usuarios únicos y sesiones registradas.
-- Ingresos por compras IAP válidas (excluye reembolsos) y duración promedio de sesión.
-- Tendencia diaria de sesiones e ingresos.
+- Usuarios únicos y volumen de sesiones registradas.
+- Ingresos por compras IAP válidas, excluyendo reembolsos.
+- Duración promedio por sesión.
 - Distribución de usuarios por plataforma y principales países.
-- Ventas e ingresos desglosados por producto.
+- Ventas y rentabilidad por producto.
 
-## Herramientas
+## Cómo ejecutar
 
-- **Python** y **pandas** para cargar, limpiar y agregar los datos.
-- **Google Colab** para ejecutar el notebook.
-- **HTML, JavaScript y Chart.js** para las visualizaciones interactivas.
-- **CSV** para el reporte ejecutivo.
+### 1) Preparar el entorno
 
-## Cómo ejecutar el notebook
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-1. Abre [`playloop.ipynb`](./playloop.ipynb) en Google Colab.
-2. Sube los archivos de datos a Google Drive, dentro de la carpeta `playloop_datasets (1)`, o actualiza `folder_path` en el notebook para usar la ruta que prefieras.
-3. Asegúrate de que la carpeta contenga estos archivos: `compras.csv`, `gasto_ua.csv`, `ingresos_ads.csv`, `partidas.csv`, `productos_iap.csv`, `usuarios.csv` y `sesiones.csv`.
-4. Ejecuta las celdas en orden y autoriza el acceso a Drive cuando Colab lo solicite.
+### 2) Ejecutar el análisis
 
-El notebook crea el dashboard dentro de la salida de Colab. Necesita conexión a internet para cargar Chart.js desde su CDN. Los archivos con datos fuente no están incluidos en este repositorio; no publiques datos personales o sensibles.
+```bash
+python main.py --folder "/ruta/a/playloop_datasets"
+```
 
-## Métricas y criterios
+La carpeta de entrada debe contener archivos como:
+`compras.csv`, `gasto_ua.csv`, `ingresos_ads.csv`, `partidas.csv`, `productos_iap.csv`, `usuarios.csv` y `sesiones.csv`.
 
-- Los ingresos principales del dashboard se calculan a partir de compras no reembolsadas.
-- La actividad se resume a partir de los eventos de sesión registrados.
-- El reporte CSV presenta ventas e ingresos por producto; revisa la moneda y el formato de importes al reutilizarlo con otros datos.
+### 3) Revisar resultados
 
-## Próximos pasos
+El script genera un resumen en CSV en `output/summary.csv` y además imprime un JSON con los indicadores principales.
 
-- Documentar definiciones de métricas y supuestos de negocio.
-- Incorporar análisis de retención y cohortes.
-- Comparar el retorno de inversión de adquisición con los ingresos generados.
-- Añadir pruebas de calidad y validaciones para los datos de entrada.
+## Mejora aplicada
+
+La principal mejora fue separar la lógica de negocio del notebook para hacer el proyecto más mantenible:
+
+- limpieza y validación de datos centralizada,
+- cálculo de KPIs reutilizable,
+- pruebas automatizadas para la lógica crítica,
+- ejecución más simple fuera de Google Colab.
+
+## Dashboard local profesional
+
+Se ha añadido una interfaz ejecutable localmente con Streamlit para presentar el proyecto de forma más clara, visual y adecuada para portfolio.
+
+### Ejecutar la app
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+La app mostrará un resumen ejecutivo de productos, métricas clave y gráficos interactivos.
+
+### 1) Branding premium
+
+- Diseñamos una identidad visual más cuidada con colores sobrios y tarjetas de KPI.
+- Se mejora la presentación para una demo profesional y entrevista técnica.
+
+### 2) Métricas extra
+
+- Se añadieron indicadores de contribución por producto.
+- Se muestran insights clave para comunicar mejor la historia de negocio.
+- La estructura facilita comparar volumen, ingresos y rendimiento por producto.
+
+### 3) Preparación para despliegue
+
+- La app está lista para ejecutarse con Streamlit.
+- También se incluye un archivo Docker para despliegue en servicios cloud o entornos profesionales.
+- Se puede publicar en servicios como Streamlit Cloud, Render o Railway.
+
+### Despliegue con Docker
+
+```bash
+docker build -t playloop-analytics .
+docker run -p 8501:8501 playloop-analytics
+```
 
 ---
 
