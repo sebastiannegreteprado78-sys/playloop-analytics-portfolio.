@@ -1,44 +1,44 @@
 # PlayLoop Analytics Portfolio
 
-Análisis de datos de una aplicación móvil de juegos centrado en adquisición de usuarios, actividad y monetización por compras dentro de la app (IAP). Este proyecto combina un notebook exploratorio con una base Python reutilizable y un dashboard para comunicar indicadores clave.
+Data analysis for a mobile game application focused on user acquisition, activity, and monetization through in-app purchases (IAP). This project combines an exploratory notebook, a reusable Python data layer, and a dashboard to communicate key performance indicators.
 
-> Proyecto de portafolio con datos de ejemplo. Las métricas son descriptivas y no representan resultados reales de un producto en producción.
+> Portfolio project using sample data. Metrics are descriptive only and should not be interpreted as results from a real production product.
 
 ## Dashboard
 
-[**Abrir dashboard interactivo**](https://datastudio.google.com/reporting/07e0f980-8727-4d53-baef-06ce66d33732)
+[**Open interactive dashboard**](https://datastudio.google.com/reporting/07e0f980-8727-4d53-baef-06ce66d33732)
 
-![Captura del dashboard de PlayLoop](./Captura%20de%20pantalla%202026-11-03%20a%20la%28s%29%2015.18.21.png)
+![PlayLoop dashboard screenshot](./Captura%20de%20pantalla%202026-11-03%20a%20la%28s%29%2015.18.21.png)
 
-## Objetivos
+## Objectives
 
-- Explorar la actividad de usuarios y sesiones.
-- Analizar ingresos y ventas de IAP sin reembolsos.
-- Comparar usuarios por plataforma y país.
-- Mantener una estructura reproducible para análisis y reportes.
+- Explore user and session activity.
+- Analyze revenue and sales from IAP without refunds.
+- Compare users by platform and country.
+- Maintain a reproducible structure for analysis and reporting.
 
-## Estructura del repositorio
+## Repository structure
 
-| Archivo o carpeta | Descripción |
+| File or folder | Description |
 | --- | --- |
-| [`playloop.ipynb`](./playloop.ipynb) | Notebook original con el dashboard interactivo y exploración de datos. |
-| [`main.py`](./main.py) | Script reutilizable para cargar datos y generar un resumen ejecutivo. |
-| [`src/playloop_analysis.py`](./src/playloop_analysis.py) | Lógica central de limpieza, validación y cálculo de KPIs. |
-| [`tests/test_playloop_analysis.py`](./tests/test_playloop_analysis.py) | Pruebas para confirmar la lógica clave del análisis. |
-| [`requirements.txt`](./requirements.txt) | Dependencias mínimas para ejecutar el proyecto localmente. |
-| [`PlayLoop_Analytics_Report - Reporte_Ejecutivo.csv`](./PlayLoop_Analytics_Report%20-%20Reporte_Ejecutivo.csv) | Resumen ejecutivo por producto y ventas. |
+| [`playloop.ipynb`](./playloop.ipynb) | Original notebook with the interactive dashboard and exploratory data analysis. |
+| [`main.py`](./main.py) | Reusable script to load data and generate an executive summary. |
+| [`src/playloop_analysis.py`](./src/playloop_analysis.py) | Core logic for cleaning, validation, and KPI calculation. |
+| [`tests/test_playloop_analysis.py`](./tests/test_playloop_analysis.py) | Tests to validate the main analysis logic. |
+| [`requirements.txt`](./requirements.txt) | Minimum dependencies to run the project locally. |
+| [`PlayLoop_Analytics_Report - Reporte_Ejecutivo.csv`](./PlayLoop_Analytics_Report%20-%20Reporte_Ejecutivo.csv) | Executive summary by product and sales. |
 
-## Qué muestra el proyecto
+## What the project shows
 
-- Usuarios únicos y volumen de sesiones registradas.
-- Ingresos por compras IAP válidas, excluyendo reembolsos.
-- Duración promedio por sesión.
-- Distribución de usuarios por plataforma y principales países.
-- Ventas y rentabilidad por producto.
+- Unique users and total sessions recorded.
+- Revenue from valid IAP purchases, excluding refunds.
+- Average session duration.
+- User distribution by platform and top countries.
+- Sales and profitability by product.
 
-## Cómo ejecutar
+## How to run
 
-### 1) Preparar el entorno
+### 1) Set up the environment
 
 ```bash
 python -m venv .venv
@@ -46,33 +46,33 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2) Ejecutar el análisis
+### 2) Run the analysis
 
 ```bash
-python main.py --folder "/ruta/a/playloop_datasets"
+python main.py --folder "/path/to/playloop_datasets"
 ```
 
-La carpeta de entrada debe contener archivos como:
-`compras.csv`, `gasto_ua.csv`, `ingresos_ads.csv`, `partidas.csv`, `productos_iap.csv`, `usuarios.csv` y `sesiones.csv`.
+The input folder should contain files such as:
+`compras.csv`, `gasto_ua.csv`, `ingresos_ads.csv`, `partidas.csv`, `productos_iap.csv`, `usuarios.csv`, and `sesiones.csv`.
 
-### 3) Revisar resultados
+### 3) Review the results
 
-El script genera un resumen en CSV en `output/summary.csv` y además imprime un JSON con los indicadores principales.
+The script generates a CSV summary in `output/summary.csv` and also prints a JSON with the main indicators.
 
-## Mejora aplicada
+## Improvement implemented
 
-La principal mejora fue separar la lógica de negocio del notebook para hacer el proyecto más mantenible:
+The main improvement was separating the business logic from the notebook to make the project more maintainable:
 
-- limpieza y validación de datos centralizada,
-- cálculo de KPIs reutilizable,
-- pruebas automatizadas para la lógica crítica,
-- ejecución más simple fuera de Google Colab.
+- centralized data cleaning and validation,
+- reusable KPI calculation,
+- automated tests for critical logic,
+- simpler execution outside Google Colab.
 
-## Dashboard local profesional
+## Professional local dashboard
 
-Se ha añadido una interfaz ejecutable localmente con Streamlit para presentar el proyecto de forma más clara, visual y adecuada para portfolio.
+A locally executable interface was added with Streamlit to present the project in a clearer, more visual, and portfolio-friendly way.
 
-### Ejecutar la app
+### Run the app
 
 ```bash
 python -m venv .venv
@@ -81,26 +81,26 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-La app mostrará un resumen ejecutivo de productos, métricas clave y gráficos interactivos.
+The app displays an executive summary of products, key metrics, and interactive charts.
 
-### 1) Branding premium
+### 1) Premium branding
 
-- Diseñamos una identidad visual más cuidada con colores sobrios y tarjetas de KPI.
-- Se mejora la presentación para una demo profesional y entrevista técnica.
+- A cleaner visual identity was designed with refined colors and KPI cards.
+- The presentation is more suitable for professional demos and technical interviews.
 
-### 2) Métricas extra
+### 2) Additional metrics
 
-- Se añadieron indicadores de contribución por producto.
-- Se muestran insights clave para comunicar mejor la historia de negocio.
-- La estructura facilita comparar volumen, ingresos y rendimiento por producto.
+- Product contribution indicators were added.
+- Key insights are shown to communicate the business story more effectively.
+- The structure helps compare sales volume, revenue, and product performance.
 
-### 3) Preparación para despliegue
+### 3) Deployment readiness
 
-- La app está lista para ejecutarse con Streamlit.
-- También se incluye un archivo Docker para despliegue en servicios cloud o entornos profesionales.
-- Se puede publicar en servicios como Streamlit Cloud, Render o Railway.
+- The app is ready to run with Streamlit.
+- A Docker file is included for cloud deployment or professional environments.
+- It can be published on services such as Streamlit Cloud, Render, or Railway.
 
-### Despliegue con Docker
+### Docker deployment
 
 ```bash
 docker build -t playloop-analytics .
@@ -109,4 +109,4 @@ docker run -p 8501:8501 playloop-analytics
 
 ---
 
-Desarrollado como proyecto de portafolio de analítica de datos.
+Developed as a data analytics portfolio project.
